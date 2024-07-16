@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+*{
+    font-family: "Source Sans 3", sans-serif;
+    color: white;
+ 
+    
+}
+.body{
+    background-color: rgb(22, 22, 37);
+}
+.body::-webkit-scrollbar{
+    display:none;
+}
+.label{
+    color: rgb(54, 77, 255);
+}
+
+.card{
+    background-color: rgb(49, 61, 90) !important ;
+    color: white !important;
+}
+.card-title{
+    letter-spacing: 3px;
+    background-color: rgb(34, 44, 66);
+}
+.about{
+    height: 300px !important;
+}
+
+
+.footer {
+  
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+
+    width: 100%;
+    bottom: 0;
+}
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+}
