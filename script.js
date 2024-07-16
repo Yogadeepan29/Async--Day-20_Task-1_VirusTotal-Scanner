@@ -75,7 +75,7 @@ scanFile.addEventListener("click", (upload) => {
       }
       const fileId = data.data.id;
       //* <------------------------ Rerouted for in-depth analysis to access detailed information ------------------------>
-      return fetch(`https://www.virustotal.com/api/v3/analyses/${fileId}`, {
+      return fetch(`https://cors-anywhere.herokuapp.com/https://www.virustotal.com/api/v3/analyses/${fileId}`, {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -110,7 +110,7 @@ scanFile.addEventListener("click", (upload) => {
 
       //* <------------------------------ Rerouted to get widget report of the scanned file ------------------------------>
       return fetch(
-        `https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
+        `https://cors-anywhere.herokuapp.com/https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
         {
           method: "GET",
           headers: {
