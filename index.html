@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Yogadeepan.R" />
-    <meta name="google-site-verification" content="QWchobPlRuiCZNHYP0yV9kgHZSRXlsBSHgFlpdJqp3A" />
+    <meta
+      name="google-site-verification"
+      content="QWchobPlRuiCZNHYP0yV9kgHZSRXlsBSHgFlpdJqp3A"
+    />
     <title>VirusTotal Scanner</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -37,7 +40,7 @@
         src="https://cdn-icons-png.flaticon.com/512/2050/2050129.png "
         alt=""
       /><br />
-      <p class="text-center text-info ">
+      <p class="text-center text-info">
         Analyse suspicious files and URLs to detect malware and other <br />
         breaches, automatically share them with the security community.
       </p>
@@ -48,7 +51,7 @@
           <form>
             <div class="mb-3">
               <input type="file" class="form-control" id="fileInput" />
-              <p class="text-danger fw-bolder" id="file-info">
+              <p class="text-danger fw-bolder mt-2" id="file-info">
                 Note : Maximum file size is 32MB
               </p>
             </div>
@@ -76,7 +79,18 @@
           </form>
         </div>
       </div>
-      
+      <!-- Disclaimer section -->
+      <div class="alert alert-warning text-danger mt-3 fs-5" role="alert">
+        <h4 class="alert-heading text-center">
+        <strong class="text-danger fw-bolder">
+          <i class="fa-solid fa-triangle-exclamation text-danger"></i> Important
+          Notice</strong
+        ></h4><hr>
+        Please be aware that this is a project which sends the uploaded data to
+        the VirusTotal API. Please do not upload or share your personal and
+        sensitive information such as photos, videos, passwords, phone numbers, bills, identity
+        proof or credit card details on this site.
+      </div>
       <!-- Result section -->
       <section id="result">
         <div class="row mt-5">
@@ -137,6 +151,10 @@
 
     <!-- JavaScript files -->
     <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/3389523cb3.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
