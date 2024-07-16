@@ -59,7 +59,7 @@ scanFile.addEventListener("click", (upload) => {
     body: formData,
   };
 
-  fetch("https://www.virustotal.com/api/v3/files", getFile)
+  fetch("https://cors-anywhere.herokuapp.com/https://www.virustotal.com/api/v3/files", getFile)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
