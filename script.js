@@ -52,7 +52,6 @@ scanFile.addEventListener("click", (upload) => {
 
   const getFile = {
     method: "POST",
-    mode: 'no-cors',
     headers: {
       accept: "application/json",
       "x-apikey": apiKey,
@@ -78,7 +77,6 @@ scanFile.addEventListener("click", (upload) => {
       //* <------------------------ Rerouted for in-depth analysis to access detailed information ------------------------>
       return fetch(`https://www.virustotal.com/api/v3/analyses/${fileId}`, {
         method: "GET",
-        mode: 'no-cors',
         headers: {
           accept: "application/json",
           "x-apikey": apiKey,
@@ -115,7 +113,6 @@ scanFile.addEventListener("click", (upload) => {
         `https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
         {
           method: "GET",
-          mode: 'no-cors',
           headers: {
             accept: "application/json",
             "x-apikey": apiKey,
@@ -194,7 +191,6 @@ scanUrl.addEventListener("click", (upload) => {
 
   const getUrl = {
     method: "POST",
-    mode: 'no-cors',
     headers: {
       accept: "application/json",
       "x-apikey": apiKey,
@@ -222,7 +218,6 @@ scanUrl.addEventListener("click", (upload) => {
       //* <--------------------- Rerouted for in-depth analysis to access detailed information --------------------->
       return fetch(`https://www.virustotal.com/api/v3/analyses/${urlId}`, {
         method: "GET",
-        mode: 'no-cors',
         headers: {
           accept: "application/json",
           "x-apikey": apiKey,
@@ -260,7 +255,6 @@ scanUrl.addEventListener("click", (upload) => {
         `https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
         {
           method: "GET",
-          mode: 'no-cors',
           headers: {
             accept: "application/json",
             "x-apikey": apiKey,
