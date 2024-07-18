@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[[redirects]]
+  from = "/api/*"
+  to = "www.virustotal.com/api/v3/:splat"
+  status = 200
+  force = true
