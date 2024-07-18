@@ -15,7 +15,7 @@ const widget = document.getElementById("widget");
 //* <-------------------------------------- VirusTotal API key and CORS Proxy -------------------------------------->
 const apiKey =
   "8ae96d3233eba5915e177ed3a370b38b4f18091acbd1a8a7a044f3e20378e49f";
-
+const cors = "https://corsproxy.io/?" 
 //! <---------------------------------------- Event listener for scanning a file ---------------------------------------->
 
 scanFile.addEventListener("click", (upload) => {
@@ -59,7 +59,7 @@ scanFile.addEventListener("click", (upload) => {
     body: formData,
   };
 
-  fetch("https://www.virustotal.com/api/v3/files", getFile)
+  fetch(cors+"https://www.virustotal.com/api/v3/files", getFile)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -75,7 +75,7 @@ scanFile.addEventListener("click", (upload) => {
       }
       const fileId = data.data.id;
       //* <------------------------ Rerouted for in-depth analysis to access detailed information ------------------------>
-      return fetch(`https://www.virustotal.com/api/v3/analyses/${fileId}`, {
+      return fetch(`${cors}https://www.virustotal.com/api/v3/analyses/${fileId}`, {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -110,7 +110,7 @@ scanFile.addEventListener("click", (upload) => {
 
       //* <------------------------------ Rerouted to get widget report of the scanned file ------------------------------>
       return fetch(
-        `https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
+        `${cors}https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
         {
           method: "GET",
           headers: {
@@ -199,7 +199,7 @@ scanUrl.addEventListener("click", (upload) => {
     body: urlEncoded.toString(),
   };
 
-  fetch("https://www.virustotal.com/api/v3/urls", getUrl)
+  fetch(cors+"https://www.virustotal.com/api/v3/urls", getUrl)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -216,7 +216,7 @@ scanUrl.addEventListener("click", (upload) => {
 
       const urlId = data.data.id;
       //* <--------------------- Rerouted for in-depth analysis to access detailed information --------------------->
-      return fetch(`https://www.virustotal.com/api/v3/analyses/${urlId}`, {
+      return fetch(`${cors}https://www.virustotal.com/api/v3/analyses/${urlId}`, {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -252,7 +252,7 @@ scanUrl.addEventListener("click", (upload) => {
 
       //* <-------------------------- Rerouted to get widget report of the scanned file -------------------------->
       return fetch(
-        `https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
+        `${cors}https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
         {
           method: "GET",
           headers: {
