@@ -77,6 +77,7 @@ scanFile.addEventListener("click", (upload) => {
       //* <------------------------ Rerouted for in-depth analysis to access detailed information ------------------------>
       return fetch(`https://www.virustotal.com/api/v3/analyses/${fileId}`, {
         method: "GET",
+        mode: 'no-cors',
         headers: {
           accept: "application/json",
           "x-apikey": apiKey,
@@ -218,6 +219,7 @@ scanUrl.addEventListener("click", (upload) => {
       //* <--------------------- Rerouted for in-depth analysis to access detailed information --------------------->
       return fetch(`https://www.virustotal.com/api/v3/analyses/${urlId}`, {
         method: "GET",
+        mode: 'no-cors',
         headers: {
           accept: "application/json",
           "x-apikey": apiKey,
