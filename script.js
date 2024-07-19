@@ -199,7 +199,7 @@ scanUrl.addEventListener("click", (upload) => {
     body: urlEncoded.toString(),
   };
 
-  fetch("https://ryd-pro.netlify.app/.netlify/functions/first?https://www.virustotal.com/api/v3/urls", getUrl)
+  fetch("https://www.virustotal.com/api/v3/urls", getUrl)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -216,7 +216,7 @@ scanUrl.addEventListener("click", (upload) => {
 
       const urlId = data.data.id;
       //* <--------------------- Rerouted for in-depth analysis to access detailed information --------------------->
-      return fetch(`https://ryd-pro.netlify.app/.netlify/functions/first?https://www.virustotal.com/api/v3/analyses/${urlId}`, {
+      return fetch(`https://www.virustotal.com/api/v3/analyses/${urlId}`, {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -252,7 +252,7 @@ scanUrl.addEventListener("click", (upload) => {
 
       //* <-------------------------- Rerouted to get widget report of the scanned file -------------------------->
       return fetch(
-        `https://ryd-pro.netlify.app/.netlify/functions/first?https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
+        `https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
         {
           method: "GET",
           headers: {
