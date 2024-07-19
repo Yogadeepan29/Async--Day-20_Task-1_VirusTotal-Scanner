@@ -60,7 +60,7 @@ scanFile.addEventListener("click", (upload) => {
     body: formData,
   };
 
-  fetch("https://www.virustotal.com/api/v3/files", getFile)
+  fetch(proxy+"https://www.virustotal.com/api/v3/files", getFile)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -76,7 +76,7 @@ scanFile.addEventListener("click", (upload) => {
       }
       const fileId = data.data.id;
       //* <------------------------ Rerouted for in-depth analysis to access detailed information ------------------------>
-      return fetch(`https://www.virustotal.com/api/v3/analyses/${fileId}`, {
+      return fetch(`${proxy}https://www.virustotal.com/api/v3/analyses/${fileId}`, {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -111,7 +111,7 @@ scanFile.addEventListener("click", (upload) => {
 
       //* <------------------------------ Rerouted to get widget report of the scanned file ------------------------------>
       return fetch(
-        `https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
+        `${proxy}https://www.virustotal.com/api/v3/widget/url?query=${sha256}`,
         {
           method: "GET",
           headers: {
