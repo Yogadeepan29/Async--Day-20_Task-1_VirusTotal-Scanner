@@ -13,8 +13,8 @@ const iframeContainer = document.getElementById("iframe-container");
 const widget = document.getElementById("widget");
 
 //* <-------------------------------------- VirusTotal API key and CORS Proxy -------------------------------------->
-const apiKey = "8ae96d3233eba5915e177ed3a370b38b4f18091acbd1a8a7a044f3e20378e49f";
-const corsProxyUrl = "https://ryd-vtscanner.netlify.app/.netlify/functions/cors-proxy/";
+const apiKey =
+  "8ae96d3233eba5915e177ed3a370b38b4f18091acbd1a8a7a044f3e20378e49f";
 
 //! <---------------------------------------- Event listener for scanning a file ---------------------------------------->
 
@@ -199,7 +199,7 @@ scanUrl.addEventListener("click", (upload) => {
     body: urlEncoded.toString(),
   };
 
-  fetch(corsProxyUrl+"https://www.virustotal.com/api/v3/urls", getUrl)
+  fetch("https://www.virustotal.com/api/v3/urls", getUrl)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -216,7 +216,7 @@ scanUrl.addEventListener("click", (upload) => {
 
       const urlId = data.data.id;
       //* <--------------------- Rerouted for in-depth analysis to access detailed information --------------------->
-      return fetch(`${corsProxyUrl}https://www.virustotal.com/api/v3/analyses/${urlId}`, {
+      return fetch(`https://www.virustotal.com/api/v3/analyses/${urlId}`, {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -252,7 +252,7 @@ scanUrl.addEventListener("click", (upload) => {
 
       //* <-------------------------- Rerouted to get widget report of the scanned file -------------------------->
       return fetch(
-        `${corsProxyUrl}https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
+        `https://www.virustotal.com/api/v3/widget/url?query=${scanedUrl}`,
         {
           method: "GET",
           headers: {
