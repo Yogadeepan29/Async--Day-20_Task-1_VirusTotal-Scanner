@@ -53,6 +53,7 @@ scanFile.addEventListener("click", (upload) => {
   const getFile = {
     method: "POST",
     headers: {
+      "Access-Control-Allow-Origin": "https://ryd-vtscanner.netlify.app/",
       accept: "application/json",
       "x-apikey": apiKey,
     },
@@ -78,6 +79,7 @@ scanFile.addEventListener("click", (upload) => {
       return fetch(`https://www.virustotal.com/api/v3/analyses/${fileId}`, {
         method: "GET",
         headers: {
+          "Access-Control-Allow-Origin": "https://ryd-vtscanner.netlify.app/",
           accept: "application/json",
           "x-apikey": apiKey,
         },
@@ -114,6 +116,7 @@ scanFile.addEventListener("click", (upload) => {
         {
           method: "GET",
           headers: {
+            "Access-Control-Allow-Origin": "https://ryd-vtscanner.netlify.app/",
             accept: "application/json",
             "x-apikey": apiKey,
           },
@@ -192,6 +195,7 @@ scanUrl.addEventListener("click", (upload) => {
   const getUrl = {
     method: "POST",
     headers: {
+      "Access-Control-Allow-Origin": "https://ryd-vtscanner.netlify.app/",
       accept: "application/json",
       "x-apikey": apiKey,
       "Content-Type": "application/x-www-form-urlencoded",
@@ -219,6 +223,7 @@ scanUrl.addEventListener("click", (upload) => {
       return fetch(`https://www.virustotal.com/api/v3/analyses/${urlId}`, {
         method: "GET",
         headers: {
+          "Access-Control-Allow-Origin": "https://ryd-vtscanner.netlify.app/",
           accept: "application/json",
           "x-apikey": apiKey,
         },
@@ -256,6 +261,7 @@ scanUrl.addEventListener("click", (upload) => {
         {
           method: "GET",
           headers: {
+            "Access-Control-Allow-Origin": "https://ryd-vtscanner.netlify.app/",
             accept: "application/json",
             "x-apikey": apiKey,
           },
