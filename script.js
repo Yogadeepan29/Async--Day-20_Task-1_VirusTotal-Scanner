@@ -22,7 +22,6 @@ const proxy = "https://cors-anywhere-hcr0.onrender.com/";
 scanFile.addEventListener("click", (upload) => {
   upload.preventDefault();
   urlInput.value = "";
-  urlInput.classList.remove("highlight");
   fileInput.classList.add("highlight");
   iframeContainer.innerHTML = "";
   hashOutput.innerHTML = `<div class="d-flex justify-content-center">
@@ -161,7 +160,6 @@ scanUrl.addEventListener("click", (upload) => {
   upload.preventDefault();
   fileInput.value = "";
   fileInput.classList.remove("highlight");
-  urlInput.classList.add("highlight");
   iframeContainer.innerHTML = "";
   hashOutput.innerHTML = `<div class="d-flex justify-content-center">
   <div class="spinner-border text-info" role="status">
