@@ -1,0 +1,2 @@
+[functions]
+  cors-proxy = "src/cors-proxy.js"
