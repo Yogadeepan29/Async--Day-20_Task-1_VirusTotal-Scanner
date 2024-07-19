@@ -13,6 +13,7 @@ const iframeContainer = document.getElementById("iframe-container");
 const widget = document.getElementById("widget");
 
 //* <-------------------------------------- VirusTotal API key and CORS Proxy -------------------------------------->
+const apiKey = "8ae96d3233eba5915e177ed3a370b38b4f18091acbd1a8a7a044f3e20378e49f";
 const corsProxyUrl = "https://your-netlify-site.netlify.app/.netlify/functions/cors-proxy";
 
 //! <---------------------------------------- Event listener for scanning a file ---------------------------------------->
@@ -192,6 +193,7 @@ scanUrl.addEventListener("click", (upload) => {
     method: "POST",
     headers: {
       accept: "application/json",
+      "x-apikey": apiKey,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: urlEncoded.toString(),
@@ -218,6 +220,7 @@ scanUrl.addEventListener("click", (upload) => {
         method: "GET",
         headers: {
           accept: "application/json",
+          "x-apikey": apiKey,
         },
       });
     })
@@ -254,6 +257,7 @@ scanUrl.addEventListener("click", (upload) => {
           method: "GET",
           headers: {
             accept: "application/json",
+            "x-apikey": apiKey,
           },
         }
       );
