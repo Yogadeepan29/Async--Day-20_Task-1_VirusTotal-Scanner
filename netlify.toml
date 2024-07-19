@@ -1,2 +1,2 @@
 [functions]
-  cors-proxy = "src/cors-proxy.js"
+cors-proxy.function = "src/cors-proxy.js"
