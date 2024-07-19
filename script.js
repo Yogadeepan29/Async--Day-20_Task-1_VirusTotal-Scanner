@@ -192,7 +192,6 @@ scanUrl.addEventListener("click", (upload) => {
     method: "POST",
     headers: {
       accept: "application/json",
-      "x-apikey": apiKey,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: urlEncoded.toString(),
@@ -219,7 +218,6 @@ scanUrl.addEventListener("click", (upload) => {
         method: "GET",
         headers: {
           accept: "application/json",
-          "x-apikey": apiKey,
         },
       });
     })
@@ -256,7 +254,6 @@ scanUrl.addEventListener("click", (upload) => {
           method: "GET",
           headers: {
             accept: "application/json",
-            "x-apikey": apiKey,
           },
         }
       );
