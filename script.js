@@ -24,11 +24,18 @@ scanFile.addEventListener("click", (upload) => {
   urlInput.value = "";
   fileInput.classList.add("highlight");
   iframeContainer.innerHTML = "";
-  hashOutput.innerHTML = `<div class="d-flex justify-content-center">
-  <div class="spinner-border text-info" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div>`;
+  hashOutput.innerHTML = `
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+     <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>`;
+  let pageDelay = setTimeout(() => {
+    hashOutput.innerHTML += `
+    <p class="text-info text-center px-5 pt-4">
+    Due to inactivity on our page, data retrieval may be slower.
+    Please wait for the data to load. We apologize for the inconvenience. </p>`;
+  }, 5000);
   date.innerHTML = "";
   details.innerHTML = "";
   const file = fileInput.files[0];
@@ -37,11 +44,13 @@ scanFile.addEventListener("click", (upload) => {
     fileInfo.textContent = "Please select a file to scan (Max - 32MB)";
     fileInput.className += " is-invalid";
     hashOutput.innerHTML = "";
+    clearTimeout(pageDelay);
     return;
   } else if (file.size > 32 * 1024 * 1024) {
     fileInfo.textContent = "File is Too Large (Max - 32MB)";
     fileInput.className += " is-invalid";
     hashOutput.innerHTML = "";
+    clearTimeout(pageDelay);
     return;
   } else {
     fileInfo.textContent = "";
@@ -62,7 +71,7 @@ scanFile.addEventListener("click", (upload) => {
     body: formData,
   };
 
-  fetch(proxy+"https://www.virustotal.com/api/v3/files", getFile)
+  fetch(proxy + "https://www.virustotal.com/api/v3/files", getFile)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -78,13 +87,16 @@ scanFile.addEventListener("click", (upload) => {
       }
       const fileId = data.data.id;
       //* <------------------------ Rerouted for in-depth analysis to access detailed information ------------------------>
-      return fetch(`${proxy}https://www.virustotal.com/api/v3/analyses/${fileId}`, {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          "x-apikey": apiKey,
-        },
-      });
+      return fetch(
+        `${proxy}https://www.virustotal.com/api/v3/analyses/${fileId}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "x-apikey": apiKey,
+          },
+        }
+      );
     })
     .then((response) => {
       if (!response.ok) {
@@ -151,6 +163,7 @@ scanFile.addEventListener("click", (upload) => {
       fileInfo.textContent = `Error: ${error.message || error}`;
       fileInput.className += " is-invalid";
       hashOutput.innerHTML = "";
+      clearTimeout(pageDelay);
     });
 });
 
@@ -161,11 +174,18 @@ scanUrl.addEventListener("click", (upload) => {
   fileInput.value = "";
   fileInput.classList.remove("highlight");
   iframeContainer.innerHTML = "";
-  hashOutput.innerHTML = `<div class="d-flex justify-content-center">
-  <div class="spinner-border text-info" role="status">
+  hashOutput.innerHTML = `
+  <div class="d-flex justify-content-center">
+   <div class="spinner-border text-info" role="status">
     <span class="visually-hidden">Loading...</span>
-  </div>
-</div>`;
+   </div>
+  </div>`;
+  let pageDelay = setTimeout(() => {
+    hashOutput.innerHTML += `
+    <p class="text-info text-center px-5 pt-4">
+    Due to inactivity on our page, data retrieval may be slower.
+    Please wait for the data to load. We apologize for the inconvenience. </p>`;
+  }, 5000);
   date.innerHTML = "";
   details.innerHTML = "";
 
@@ -178,11 +198,13 @@ scanUrl.addEventListener("click", (upload) => {
     urlInfo.textContent = "Please enter a URL to scan";
     urlInput.className += " is-invalid";
     hashOutput.innerHTML = "";
+    clearTimeout(pageDelay);
     return;
   } else if (!urlPattern.test(url)) {
     urlInfo.textContent = "Invalid URL";
     urlInput.className += " is-invalid";
     hashOutput.innerHTML = "";
+    clearTimeout(pageDelay);
     return;
   } else {
     urlInfo.textContent = "";
@@ -204,7 +226,7 @@ scanUrl.addEventListener("click", (upload) => {
     body: urlEncoded.toString(),
   };
 
-  fetch(proxy+"https://www.virustotal.com/api/v3/urls", getUrl)
+  fetch(proxy + "https://www.virustotal.com/api/v3/urls", getUrl)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -221,13 +243,16 @@ scanUrl.addEventListener("click", (upload) => {
 
       const urlId = data.data.id;
       //* <--------------------- Rerouted for in-depth analysis to access detailed information --------------------->
-      return fetch(`${proxy}https://www.virustotal.com/api/v3/analyses/${urlId}`, {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          "x-apikey": apiKey,
-        },
-      });
+      return fetch(
+        `${proxy}https://www.virustotal.com/api/v3/analyses/${urlId}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "x-apikey": apiKey,
+          },
+        }
+      );
     })
     .then((response) => {
       if (!response.ok) {
@@ -296,5 +321,6 @@ scanUrl.addEventListener("click", (upload) => {
       urlInfo.textContent = `Error: ${error.message}`;
       urlInput.className += " is-invalid";
       hashOutput.innerHTML = "";
+      clearTimeout(pageDelay);
     });
 });
