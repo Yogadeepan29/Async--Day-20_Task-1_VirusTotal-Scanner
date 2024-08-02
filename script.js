@@ -82,6 +82,7 @@ scanFile.addEventListener("click", (upload) => {
     })
     .then((data) => {
       // console.log(data);
+      clearTimeout(pageDelay);
       if (!data.data || !data.data.id) {
         throw new Error("Invalid response from file submission");
       }
@@ -264,6 +265,7 @@ scanUrl.addEventListener("click", (upload) => {
     })
     .then((data) => {
       // console.log(data);
+      clearTimeout(pageDelay);
       if (!data.meta || !data.meta.url_info) {
         throw new Error("Invalid response from analysis");
       }
